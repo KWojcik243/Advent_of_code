@@ -60,9 +60,23 @@ size_counter = 0
 def dfs(directory):
     global size_counter
     for child in directory.children_list:
-        print(child.name)
-        if(child.size < 100000):
+        if child.size < 100000:
             size_counter += child.size
         dfs(child)
 
-print(dfs(main_dir))
+dfs(main_dir)
+print(size_counter)
+
+# Part 2
+
+directory_size=3000000000
+
+def dfs_the_smallest_dir_to_delete(directory):
+    global directory_size
+    for child in directory.children_list:
+        if child.size >= 30000000 - (70000000 - main_dir.size) and directory_size > child.size:
+            directory_size = child.size
+        dfs_the_smallest_dir_to_delete(child)
+
+dfs_the_smallest_dir_to_delete(main_dir)
+print(directory_size)
