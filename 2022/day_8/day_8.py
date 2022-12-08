@@ -27,4 +27,54 @@ for i in range(len(list_of_inputs)):
             if flag_is_visible:
                 visible_trees += 1
 
+            # Part 2
+
+            score = 0
+            first,second,third,fourth = 0,0,0,0
+            tmp_first_half = tmp[0:i]
+            tmp_first_half = tmp_first_half[::-1]
+            tmp_second_half = tmp[i+1:len(tmp)]
+            print(tmp_second_half)
+            for c in tmp_first_half:
+                if c >= value:
+                    first +=1
+                    break
+                else:
+                    first +=1
+            
+            for c in tmp_second_half:
+                if c >= value:
+                    second +=1
+                    break
+                else:
+                    second +=1
+            horizontally_first_half = list_of_inputs[i][0:j]
+            horizontally_first_half = horizontally_first_half[::-1]
+            for c in horizontally_first_half:
+                if c >= value:
+                    third +=1
+                    break
+                else:
+                    third +=1
+            for c in list_of_inputs[i][j+1:len(list_of_inputs[i])]:
+                if c >= value:
+                    fourth +=1
+                    break
+                else:
+                    fourth +=1
+
+            if score < first*second*third*fourth:
+                score = first*second*third*fourth
+
+            
+
+
+
+
+
+
+
+            
+
 print(visible_trees)
+print(score)
